@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Code Of Spin Wheel</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Chart JS Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script> 
+</head>
+<>
+  <h1>CATSPIN</h1>
+  <div class="container">
+      <div class="wheel_box">
+          <canvas id="spinWheel"></canvas>
+          <button id="spin_btn">Spin</button>
+          <i class="fa-solid fa-location-arrow"></i>
+      </div> 
+      <div id="text"><p>Wheel Of Fortune</p></div>
+      <!-- Audio Elements -->
+      <audio id="spin-sound" src=/></audio>
+      <!-- <audio id="win-sound" src="winner.mp3"></audio> Make sure the path is correct -->
+      <!-- "More" button to show additional options -->
+  </div>
+  <div id="winner" style="display: none;">win</div>
+ <!--<div class="inputArea" onchange="createWheel()">
+      <textarea rows="20" cols="30" >Rp.5000
+      zonk
+      Rp.5000
+      zonk
+      Rp.5000
+      zonk</textarea>
+  </div> --> 
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+    <script>
+        // Get the audio elements
+        var spinAudio = document.getElementById("spin-sound");
+        var winAudio = document.getElementById("win-sound");
+
+        // Get the button element
+        var spinButton = document.getElementById("spin_btn");
+
+        // Add event listener to the button to play audio when clicked
+        spinButton.addEventListener("click", function() {
+            // Play the spinning sound
+            spinAudio.play();
+            
+            // Check the result of the wheel here
+            var result = getResult(); // For example, this function returns a random result
+            
+            // If the result is a win, play the win sound
+            if (result === "win") {
+                winAudio.play();
+            }
+        });
+
+        // Function to get the result of the wheel (You can replace it with your game logic)
+        function getResult() {
+            // Simple logic example, if a random number is even, then it's a win
+            var randomNumber = Math.floor(Math.random() * 10) + 1; // Random number from 1 to 10
+            if (randomNumber % 2 === 0) {
+                return "win";
+            } else {
+                return "lose";
+            }
+        }
+    </script>
+</body>   
+</html>
